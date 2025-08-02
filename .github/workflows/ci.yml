@@ -46,6 +46,6 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}       # Obtenha em Vercel dashboard
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # Obtenha em Vercel dashboard
           vercel-args: '--prod'
-          working-directory: .
+          working-directory: '.'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
