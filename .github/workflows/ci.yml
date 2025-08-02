@@ -8,27 +8,56 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   test-build:
     name: 🧪 Test & Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['18.x']
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node.js & cache npm
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Restore npm cache & node_modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Lint code
         run: npm run lint
 
       - name: Build project
         run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
 
   deploy:
     name: 🚀 Deploy to Vercel
@@ -37,15 +66,20 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
 
       - name: Vercel Deploy
-        uses: vercel/action@v3
+        uses: amondnet/vercel-action@v41.1.4
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}        # Configure em Settings > Secrets
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}       # Obtenha em Vercel dashboard
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # Obtenha em Vercel dashboard
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: '--prod'
           working-directory: '.'
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
