@@ -2,6 +2,8 @@
 
 Landing page para a empresa de telecomunicações FHNET TELECOM. Este projeto foi desenvolvido para apresentar os serviços e planos da empresa, fornecer informações de contato e permitir que os usuários verifiquem a disponibilidade dos serviços em sua área.
 
+Hospedado em [fhnettelecom.net](https://www.fhnettelecom.net/).
+
 ## Tabela de Conteúdo
 
 - [Sobre o Projeto](https://www.google.com/search?q=%23sobre-o-projeto)
@@ -92,4 +94,4 @@ Você precisará ter o Node.js (versão 18.x ou superior) e um gerenciador de pa
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](https://www.google.com/search?q=gustavomotamacedo/lp-fhnet-telecom/lp-fhnet-telecom-main/LICENSE) para mais detalhes.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](https://github.com/gustavomotamacedo/lp-fhnet-telecom/blob/main/LICENSE) para mais detalhes.
