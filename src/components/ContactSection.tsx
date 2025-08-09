@@ -21,7 +21,7 @@ const ContactSection = () => {
   const plans = [
     { value: "pro", label: "PRO - 100 MB - R$ 70,00" },
     { value: "family", label: "FAMILY - 200 MB - R$ 80,00" },
-    { value: "influencer", label: "INFLUENCER - 300 MB - R$ 99,00" },
+    { value: "influencer", label: "INFLUENCER - 300 MB - R$ 99,90" },
     { value: "top", label: "TOP - 400 MB - R$ 109,00" }
   ];
 
