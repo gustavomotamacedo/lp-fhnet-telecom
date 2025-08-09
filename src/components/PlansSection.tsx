@@ -11,7 +11,7 @@ const PlansSection = () => {
       id: "pro",
       name: "PRO",
       speed: "100 MB",
-      price: "70",
+      price: "70,00",
       icon: Users,
       description: "Ideal para uso básico",
       features: [
@@ -27,7 +27,7 @@ const PlansSection = () => {
       id: "family",
       name: "FAMILY",
       speed: "200 MB",
-      price: "80",
+      price: "80,00",
       icon: Users,
       description: "Perfeito para famílias",
       features: [
@@ -43,7 +43,7 @@ const PlansSection = () => {
       id: "influencer",
       name: "INFLUENCER",
       speed: "300 MB",
-      price: "99",
+      price: "99,90",
       icon: Video,
       description: "Para criadores de conteúdo",
       features: [
@@ -59,7 +59,7 @@ const PlansSection = () => {
       id: "top",
       name: "TOP",
       speed: "400 MB",
-      price: "109",
+      price: "109,00",
       icon: Gamepad2,
       description: "Máxima performance",
       features: [
