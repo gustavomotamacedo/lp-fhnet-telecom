@@ -32,7 +32,7 @@ const Footer = () => {
                   <li>FAMILY - 200 MB - R$ 80,00</li>
                 </a>
                 <a className="hover:underline hover:text-blue-300" href="#planos">
-                  <li>INFLUENCER - 300 MB - R$ 99,00</li>
+                  <li>INFLUENCER - 300 MB - R$ 99,90</li>
                 </a>
                 <a className="hover:underline hover:text-blue-300" href="#planos">
                   <li>TOP - 400 MB - R$ 109,00</li>
